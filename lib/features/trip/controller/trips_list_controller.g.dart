@@ -7,7 +7,7 @@ part of 'trips_list_controller.dart';
 // **************************************************************************
 
 String _$tripsListControllerHash() =>
-    r'e85f2c19c1b2501399093b7c1e4bb3ad24e3a10c';
+    r'42a1fdfe064504ae4d6688d721ca0310174e57cd';
 
 /// See also [TripsListController].
 @ProviderFor(TripsListController)
