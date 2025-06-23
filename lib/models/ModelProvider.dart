@@ -21,17 +21,19 @@
 
 import 'package:amplify_core/amplify_core.dart' as amplify_core;
 import 'Activity.dart';
+import 'Profile.dart';
 import 'Trip.dart';
 
 export 'Activity.dart';
 export 'ActivityCategory.dart';
+export 'Profile.dart';
 export 'Trip.dart';
 
 class ModelProvider implements amplify_core.ModelProviderInterface {
   @override
-  String version = "91ad76c3a90fd73f297db80e8e1b9880";
+  String version = "dd0adad0d3bb0b223c3b4be681aea544";
   @override
-  List<amplify_core.ModelSchema> modelSchemas = [Activity.schema, Trip.schema];
+  List<amplify_core.ModelSchema> modelSchemas = [Activity.schema, Profile.schema, Trip.schema];
   @override
   List<amplify_core.ModelSchema> customTypeSchemas = [];
   static final ModelProvider _instance = ModelProvider();
@@ -42,6 +44,8 @@ class ModelProvider implements amplify_core.ModelProviderInterface {
     switch(modelName) {
       case "Activity":
         return Activity.classType;
+      case "Profile":
+        return Profile.classType;
       case "Trip":
         return Trip.classType;
       default:

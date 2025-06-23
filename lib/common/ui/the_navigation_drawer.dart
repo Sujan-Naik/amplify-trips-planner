@@ -1,4 +1,5 @@
 import 'package:amplify_trips_planner/common/navigation/router/routes.dart';
+import 'package:amplify_trips_planner/common/services/auth_service.dart';
 import 'package:amplify_trips_planner/common/utils/colors.dart' as constants;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -47,6 +48,11 @@ class TheNavigationDrawer extends ConsumerWidget {
                 AppRoute.pastTrips.name,
               );
             },
+          ),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app),
+            title: const Text('Logout'),
+            onTap: () => ref.read(authServiceProvider).signOut(),
           ),
         ],
       ),
