@@ -52,6 +52,7 @@ dependencies:
   amplify_core: any
   timelines: ^0.1.0
   file_picker: ^10.2.0
+  timelines_plus: ^1.0.7
 dev_dependencies:
   flutter_test:
     sdk: flutter

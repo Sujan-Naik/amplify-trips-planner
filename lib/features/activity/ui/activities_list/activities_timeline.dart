@@ -4,7 +4,7 @@ import 'package:amplify_trips_planner/features/activity/ui/activity_category_ico
 import 'package:amplify_trips_planner/models/ModelProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:timelines/timelines.dart';
+import 'package:timelines_plus/timelines_plus.dart';
 
 class ActivitiesTimeline extends StatelessWidget {
   const ActivitiesTimeline({
