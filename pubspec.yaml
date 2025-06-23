@@ -50,6 +50,7 @@ dependencies:
   uuid: ^4.5.1
 
   amplify_core: any
+  timelines: ^0.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

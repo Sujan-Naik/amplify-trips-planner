@@ -1,19 +1,20 @@
 import 'package:amplify_trips_planner/common/navigation/router/routes.dart';
-import 'package:amplify_trips_planner/common/ui/the_navigation_drawer.dart';
 import 'package:amplify_trips_planner/common/utils/colors.dart' as constants;
+import 'package:amplify_trips_planner/features/activity/ui/add_activity/add_activity_form.dart';
 import 'package:amplify_trips_planner/features/trip/controller/trip_controller.dart';
-import 'package:amplify_trips_planner/features/trip/ui/trip_page/trip_details.dart';
-import 'package:amplify_trips_planner/features/trip/ui/trip_page/trip_page_floating_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class TripPage extends ConsumerWidget {
-  const TripPage({
+class AddActivityPage extends ConsumerWidget {
+  AddActivityPage({
     required this.tripId,
     super.key,
   });
+
   final String tripId;
+
+  final formGlobalKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -25,24 +26,18 @@ class TripPage extends ConsumerWidget {
         title: const Text(
           'Amplify Trips Planner',
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              context.goNamed(
-                AppRoute.home.name,
-              );
-            },
-            icon: const Icon(Icons.home),
-          ),
-        ],
+        leading: IconButton(
+          onPressed: () {
+            context.goNamed(
+              AppRoute.trip.name,
+              pathParameters: {'id': tripId},
+            );
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
         backgroundColor: const Color(constants.primaryColorDark),
       ),
-      drawer: const TheNavigationDrawer(),
-      floatingActionButton: TripPageFloatingButton(
-        trip: tripValue,
-      ),
-      body: TripDetails(
-        tripId: tripId,
+      body: AddActivityForm(
         trip: tripValue,
       ),
     );
