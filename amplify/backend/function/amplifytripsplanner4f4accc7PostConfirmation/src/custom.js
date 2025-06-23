@@ -12,57 +12,73 @@ const query = /* GraphQL */ `
     createProfile(input: {
       email: $email,
       owner: $owner,
-
     }) {
       email
     }
   }
 `;
 
-
-
-
 /**
  * @type {import('@types/aws-lambda').PostConfirmationTriggerHandler}
  */
 exports.handler = async (event) => {
-  console.log(`EVENT: ${JSON.stringify(event)}`);
+  console.log(`Received event: ${JSON.stringify(event)}`);
 
+  // Extract user attributes and log
+  const email = event.request.userAttributes.email;
+  const userSub = event.request.userAttributes.sub;
+  const userName = event.userName;
+
+  console.log(`Extracted email: ${email}`);
+  console.log(`Extracted sub: ${userSub}`);
+  console.log(`UserName: ${userName}`);
 
   const variables = {
-
-    email: event.request.userAttributes.email,
-    owner: `${event.request.userAttributes.sub}::${event.userName}`
-
+    email: email,
+    owner: `${userSub}::${userName}`,
   };
 
-
-
-
-
+  console.log(`GraphQL variables: ${JSON.stringify(variables)}`);
 
   const endpoint = new URL(GRAPHQL_ENDPOINT);
+  console.log(`GraphQL endpoint URL: ${endpoint.href}`);
 
   const signer = new SignatureV4({
     credentials: defaultProvider(),
     region: AWS_REGION,
     service: 'appsync',
-    sha256: Sha256
+    sha256: Sha256,
   });
 
   const requestToBeSigned = new HttpRequest({
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      host: endpoint.host
+      host: endpoint.host,
     },
     hostname: endpoint.host,
     body: JSON.stringify({ query, variables }),
-    path: endpoint.pathname
+    path: endpoint.pathname,
   });
 
-  const signed = await signer.sign(requestToBeSigned);
+  console.log(`Request to be signed: ${JSON.stringify({
+    method: requestToBeSigned.method,
+    headers: requestToBeSigned.headers,
+    body: requestToBeSigned.body,
+    path: requestToBeSigned.path,
+  })}`);
+
+  let signed;
+  try {
+    signed = await signer.sign(requestToBeSigned);
+    console.log(`Signed request: ${JSON.stringify(signed)}`);
+  } catch (signError) {
+    console.error(`Error signing request: ${signError}`);
+    throw signError; // rethrow to see in logs
+  }
+
   const request = new Request(endpoint, signed);
+  console.log(`Final Request object created.`);
 
   let statusCode = 200;
   let body;
@@ -70,24 +86,28 @@ exports.handler = async (event) => {
 
   try {
     response = await fetch(request);
+    console.log(`Fetch response status: ${response.status}`);
     body = await response.json();
-    if (body.errors) statusCode = 400;
+    console.log(`Response body: ${JSON.stringify(body)}`);
+    if (body.errors) {
+      console.error(`GraphQL errors: ${JSON.stringify(body.errors)}`);
+      statusCode = 400;
+    }
   } catch (error) {
+    console.error(`Fetch error: ${error}`);
     statusCode = 500;
     body = {
       errors: [
         {
-          message: error.message
-        }
-      ]
+          message: error.message,
+        },
+      ],
     };
   }
 
-  console.log(`statusCode: ${statusCode}`);
-  console.log(`body: ${JSON.stringify(body)}`);
-
+  console.log(`Returning response with statusCode: ${statusCode} and body: ${JSON.stringify(body)}`);
   return {
     statusCode,
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   };
 };

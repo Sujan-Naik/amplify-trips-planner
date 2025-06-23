@@ -21,8 +21,6 @@ type Activity @model @auth(rules: [{allow: owner}]) {
   category: ActivityCategory!
 }
 
-
-
 type Profile
 @model
 @auth(
