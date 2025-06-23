@@ -20,6 +20,9 @@
       },
       "storage": {
         "s3cf3f0a40": {}
+      },
+      "function": {
+        "amplifytripsplanner4f4accc7PostConfirmation": {}
       }
     }
   }
