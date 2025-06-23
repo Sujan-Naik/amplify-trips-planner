@@ -75,6 +75,24 @@
       "service": "Lambda"
     }
   },
+  "parameters": {
+    "AMPLIFY_function_amplifytripsplanner4f4accc7PostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifytripsplanner4f4accc7PostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_amplifytripsplanner4f4accc7PostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifytripsplanner4f4accc7PostConfirmation"
+        }
+      ]
+    }
+  },
   "storage": {
     "s3cf3f0a40": {
       "dependsOn": [],
