@@ -42,6 +42,7 @@ class TripsListPage extends ConsumerWidget {
       ),
       body: TripsListGridView(
         tripsList: tripsListValue,
+        isPast: false,
       ),
     );
   }

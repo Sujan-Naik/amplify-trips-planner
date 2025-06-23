@@ -6,43 +6,54 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class TripsListGridView extends StatelessWidget {
   const TripsListGridView({
     required this.tripsList,
+    required this.isPast,
     super.key,
   });
 
   final AsyncValue<List<Trip>> tripsList;
+  final bool isPast;
 
   @override
   Widget build(BuildContext context) {
-    return tripsList.when(
-      data: (value) {
-        if (value.isEmpty) {
-          return const Center(
-            child: Text('No Trips'),
-          );
-        }
-        return OrientationBuilder(
+    switch (tripsList) {
+      case AsyncData(:final value):
+        return value.isEmpty
+            ? const Center(
+          child: Text('No Trips'),
+        )
+            : OrientationBuilder(
           builder: (context, orientation) {
             return GridView.count(
-              crossAxisCount: (orientation == Orientation.portrait) ? 2 : 3,
+              crossAxisCount:
+              (orientation == Orientation.portrait) ? 2 : 3,
               mainAxisSpacing: 4,
               crossAxisSpacing: 4,
               padding: const EdgeInsets.all(4),
-              childAspectRatio: (orientation == Orientation.portrait) ? 0.9 : 1.4,
+              childAspectRatio:
+              (orientation == Orientation.portrait) ? 0.9 : 1.4,
               children: value.map((tripData) {
                 return TripGridViewItem(
                   trip: tripData,
+                  isPast: isPast,
                 );
               }).toList(growable: false),
             );
           },
         );
-      },
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
-      error: (err, stack) => const Center(
-        child: Text('Error'),
-      ),
-    );
+
+      case AsyncError():
+        return const Center(
+          child: Text('Error'),
+        );
+      case AsyncLoading():
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+
+      case _:
+        return const Center(
+          child: Text('Error'),
+        );
+    }
   }
 }
