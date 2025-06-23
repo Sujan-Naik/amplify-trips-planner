@@ -13,5 +13,13 @@
   "triggerEventPath": "PostConfirmation.event.json",
   "roleName": "amplifytripsplanner4f4accc7PostConfirmation",
   "skipEdit": true,
-  "permissions": {}
+  "permissions": {
+    "api": {
+      "amplifytripsplanner": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    }
+  }
 }

@@ -70,7 +70,16 @@
   "function": {
     "amplifytripsplanner4f4accc7PostConfirmation": {
       "build": true,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "amplifytripsplanner"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }

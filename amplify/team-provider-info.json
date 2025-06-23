@@ -25,7 +25,7 @@
       "function": {
         "amplifytripsplanner4f4accc7PostConfirmation": {
           "deploymentBucketName": "amplify-amplifytripsplanner-dev-63bfb-deployment",
-          "s3Key": "amplify-builds/amplifytripsplanner4f4accc7PostConfirmation-574848576f62354a4e46-build.zip"
+          "s3Key": "amplify-builds/amplifytripsplanner4f4accc7PostConfirmation-6f76664a6853384f5775-build.zip"
         }
       }
     }
