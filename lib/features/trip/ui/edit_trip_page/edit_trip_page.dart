@@ -1,8 +1,8 @@
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:amplify_trips_planner/features/common/navigation/router/routes.dart';
-import 'package:amplify_trips_planner/features/common/ui/bottomsheet_text_form_field.dart';
-import 'package:amplify_trips_planner/features/common/utils/colors.dart' as constants;
-import 'package:amplify_trips_planner/features/common/utils/date_time_formatter.dart';
+import 'package:amplify_trips_planner/common/navigation/router/routes.dart';
+import 'package:amplify_trips_planner/common/ui/bottomsheet_text_form_field.dart';
+import 'package:amplify_trips_planner/common/utils/colors.dart' as constants;
+import 'package:amplify_trips_planner/common/utils/date_time_formatter.dart';
 import 'package:amplify_trips_planner/features/trip/controller/trip_controller.dart';
 import 'package:amplify_trips_planner/models/ModelProvider.dart';
 import 'package:flutter/material.dart';

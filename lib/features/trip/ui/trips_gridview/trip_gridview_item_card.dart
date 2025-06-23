@@ -1,5 +1,5 @@
-import 'package:amplify_trips_planner/features/common/utils/colors.dart' as constants;
-import 'package:amplify_trips_planner/features/common/utils/date_time_formatter.dart';
+import 'package:amplify_trips_planner/common/utils/colors.dart' as constants;
+import 'package:amplify_trips_planner/common/utils/date_time_formatter.dart';
 import 'package:amplify_trips_planner/models/ModelProvider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

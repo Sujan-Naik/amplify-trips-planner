@@ -16,7 +16,9 @@ class TripsAPIService {
   Future<List<Trip>> getTrips() async {
     try {
       final request = ModelQueries.list(Trip.classType);
-      final response = await Amplify.API.query(request: request).response;
+      final response = await Amplify.API.query(
+          request: request
+      ).response;
 
       final trips = response.data?.items;
       if (trips == null) {

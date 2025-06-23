@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:amplify_trips_planner/features/common/navigation/router/routes.dart';
-import 'package:amplify_trips_planner/features/common/ui/upload_progress_dialog.dart';
-import 'package:amplify_trips_planner/features/common/utils/colors.dart' as constants;
+import 'package:amplify_trips_planner/common/navigation/router/routes.dart';
+import 'package:amplify_trips_planner/common/ui/upload_progress_dialog.dart';
+import 'package:amplify_trips_planner/common/utils/colors.dart' as constants;
 import 'package:amplify_trips_planner/features/trip/controller/trip_controller.dart';
 import 'package:amplify_trips_planner/features/trip/controller/trips_list_controller.dart';
 import 'package:amplify_trips_planner/features/trip/ui/trip_page/delete_trip_dialog.dart';

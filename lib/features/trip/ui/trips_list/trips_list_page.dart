@@ -1,4 +1,4 @@
-import 'package:amplify_trips_planner/features/common/utils/colors.dart' as constants;
+import 'package:amplify_trips_planner/common/utils/colors.dart' as constants;
 import 'package:amplify_trips_planner/features/trip/controller/trips_list_controller.dart';
 import 'package:amplify_trips_planner/features/trip/ui/trips_list/add_trip_bottomsheet.dart';
 import 'package:flutter/material.dart';

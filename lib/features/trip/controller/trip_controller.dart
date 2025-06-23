@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:amplify_trips_planner/features/common/services/storage_service.dart';
+import 'package:amplify_trips_planner/common/services/storage_service.dart';
 import 'package:amplify_trips_planner/features/trip/data/trips_repository.dart';
 import 'package:amplify_trips_planner/models/ModelProvider.dart';
 import 'package:flutter/material.dart';

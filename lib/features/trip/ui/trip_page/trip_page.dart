@@ -1,12 +1,11 @@
-import 'package:amplify_trips_planner/features/common/navigation/router/routes.dart';
-import 'package:amplify_trips_planner/features/common/utils/colors.dart' as constants;
+import 'package:amplify_trips_planner/common/navigation/router/routes.dart';
+import 'package:amplify_trips_planner/common/utils/colors.dart' as constants;
 import 'package:amplify_trips_planner/features/trip/controller/trip_controller.dart';
 import 'package:amplify_trips_planner/features/trip/ui/trip_page/trip_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../common/navigation/router/routes.dart';
 
 class TripPage extends ConsumerWidget {
   const TripPage({

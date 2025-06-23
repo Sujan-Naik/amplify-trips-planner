@@ -1,5 +1,5 @@
-import 'package:amplify_trips_planner/features/common/ui/bottomsheet_text_form_field.dart';
-import 'package:amplify_trips_planner/features/common/utils/date_time_formatter.dart';
+import 'package:amplify_trips_planner/common/ui/bottomsheet_text_form_field.dart';
+import 'package:amplify_trips_planner/common/utils/date_time_formatter.dart';
 import 'package:amplify_trips_planner/features/trip/controller/trips_list_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
