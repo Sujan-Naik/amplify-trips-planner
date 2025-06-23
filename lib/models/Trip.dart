@@ -21,6 +21,7 @@
 
 import 'ModelProvider.dart';
 import 'package:amplify_core/amplify_core.dart' as amplify_core;
+import 'package:collection/collection.dart';
 
 
 /** This is an auto generated class representing the Trip type in your schema. */
@@ -33,6 +34,7 @@ class Trip extends amplify_core.Model {
   final amplify_core.TemporalDate? _endDate;
   final String? _tripImageUrl;
   final String? _tripImageKey;
+  final List<Activity>? _Activities;
   final amplify_core.TemporalDateTime? _createdAt;
   final amplify_core.TemporalDateTime? _updatedAt;
 
@@ -109,6 +111,10 @@ class Trip extends amplify_core.Model {
     return _tripImageKey;
   }
   
+  List<Activity>? get Activities {
+    return _Activities;
+  }
+  
   amplify_core.TemporalDateTime? get createdAt {
     return _createdAt;
   }
@@ -117,9 +123,9 @@ class Trip extends amplify_core.Model {
     return _updatedAt;
   }
   
-  const Trip._internal({required this.id, required tripName, required destination, required startDate, required endDate, tripImageUrl, tripImageKey, createdAt, updatedAt}): _tripName = tripName, _destination = destination, _startDate = startDate, _endDate = endDate, _tripImageUrl = tripImageUrl, _tripImageKey = tripImageKey, _createdAt = createdAt, _updatedAt = updatedAt;
+  const Trip._internal({required this.id, required tripName, required destination, required startDate, required endDate, tripImageUrl, tripImageKey, Activities, createdAt, updatedAt}): _tripName = tripName, _destination = destination, _startDate = startDate, _endDate = endDate, _tripImageUrl = tripImageUrl, _tripImageKey = tripImageKey, _Activities = Activities, _createdAt = createdAt, _updatedAt = updatedAt;
   
-  factory Trip({String? id, required String tripName, required String destination, required amplify_core.TemporalDate startDate, required amplify_core.TemporalDate endDate, String? tripImageUrl, String? tripImageKey}) {
+  factory Trip({String? id, required String tripName, required String destination, required amplify_core.TemporalDate startDate, required amplify_core.TemporalDate endDate, String? tripImageUrl, String? tripImageKey, List<Activity>? Activities}) {
     return Trip._internal(
       id: id == null ? amplify_core.UUID.getUUID() : id,
       tripName: tripName,
@@ -127,7 +133,8 @@ class Trip extends amplify_core.Model {
       startDate: startDate,
       endDate: endDate,
       tripImageUrl: tripImageUrl,
-      tripImageKey: tripImageKey);
+      tripImageKey: tripImageKey,
+      Activities: Activities != null ? List<Activity>.unmodifiable(Activities) : Activities);
   }
   
   bool equals(Object other) {
@@ -144,7 +151,8 @@ class Trip extends amplify_core.Model {
       _startDate == other._startDate &&
       _endDate == other._endDate &&
       _tripImageUrl == other._tripImageUrl &&
-      _tripImageKey == other._tripImageKey;
+      _tripImageKey == other._tripImageKey &&
+      DeepCollectionEquality().equals(_Activities, other._Activities);
   }
   
   @override
@@ -158,18 +166,18 @@ class Trip extends amplify_core.Model {
     buffer.write("id=" + "$id" + ", ");
     buffer.write("tripName=" + "$_tripName" + ", ");
     buffer.write("destination=" + "$_destination" + ", ");
-    buffer.write("startDate=" + (_startDate != null ? _startDate.format() : "null") + ", ");
-    buffer.write("endDate=" + (_endDate != null ? _endDate.format() : "null") + ", ");
+    buffer.write("startDate=" + (_startDate != null ? _startDate!.format() : "null") + ", ");
+    buffer.write("endDate=" + (_endDate != null ? _endDate!.format() : "null") + ", ");
     buffer.write("tripImageUrl=" + "$_tripImageUrl" + ", ");
     buffer.write("tripImageKey=" + "$_tripImageKey" + ", ");
-    buffer.write("createdAt=" + (_createdAt != null ? _createdAt.format() : "null") + ", ");
-    buffer.write("updatedAt=" + (_updatedAt != null ? _updatedAt.format() : "null"));
+    buffer.write("createdAt=" + (_createdAt != null ? _createdAt!.format() : "null") + ", ");
+    buffer.write("updatedAt=" + (_updatedAt != null ? _updatedAt!.format() : "null"));
     buffer.write("}");
     
     return buffer.toString();
   }
   
-  Trip copyWith({String? tripName, String? destination, amplify_core.TemporalDate? startDate, amplify_core.TemporalDate? endDate, String? tripImageUrl, String? tripImageKey}) {
+  Trip copyWith({String? tripName, String? destination, amplify_core.TemporalDate? startDate, amplify_core.TemporalDate? endDate, String? tripImageUrl, String? tripImageKey, List<Activity>? Activities}) {
     return Trip._internal(
       id: id,
       tripName: tripName ?? this.tripName,
@@ -177,7 +185,8 @@ class Trip extends amplify_core.Model {
       startDate: startDate ?? this.startDate,
       endDate: endDate ?? this.endDate,
       tripImageUrl: tripImageUrl ?? this.tripImageUrl,
-      tripImageKey: tripImageKey ?? this.tripImageKey);
+      tripImageKey: tripImageKey ?? this.tripImageKey,
+      Activities: Activities ?? this.Activities);
   }
   
   Trip copyWithModelFieldValues({
@@ -186,7 +195,8 @@ class Trip extends amplify_core.Model {
     ModelFieldValue<amplify_core.TemporalDate>? startDate,
     ModelFieldValue<amplify_core.TemporalDate>? endDate,
     ModelFieldValue<String?>? tripImageUrl,
-    ModelFieldValue<String?>? tripImageKey
+    ModelFieldValue<String?>? tripImageKey,
+    ModelFieldValue<List<Activity>?>? Activities
   }) {
     return Trip._internal(
       id: id,
@@ -195,7 +205,8 @@ class Trip extends amplify_core.Model {
       startDate: startDate == null ? this.startDate : startDate.value,
       endDate: endDate == null ? this.endDate : endDate.value,
       tripImageUrl: tripImageUrl == null ? this.tripImageUrl : tripImageUrl.value,
-      tripImageKey: tripImageKey == null ? this.tripImageKey : tripImageKey.value
+      tripImageKey: tripImageKey == null ? this.tripImageKey : tripImageKey.value,
+      Activities: Activities == null ? this.Activities : Activities.value
     );
   }
   
@@ -207,11 +218,24 @@ class Trip extends amplify_core.Model {
       _endDate = json['endDate'] != null ? amplify_core.TemporalDate.fromString(json['endDate']) : null,
       _tripImageUrl = json['tripImageUrl'],
       _tripImageKey = json['tripImageKey'],
+      _Activities = json['Activities']  is Map
+        ? (json['Activities']['items'] is List
+          ? (json['Activities']['items'] as List)
+              .where((e) => e != null)
+              .map((e) => Activity.fromJson(new Map<String, dynamic>.from(e)))
+              .toList()
+          : null)
+        : (json['Activities'] is List
+          ? (json['Activities'] as List)
+              .where((e) => e?['serializedData'] != null)
+              .map((e) => Activity.fromJson(new Map<String, dynamic>.from(e?['serializedData'])))
+              .toList()
+          : null),
       _createdAt = json['createdAt'] != null ? amplify_core.TemporalDateTime.fromString(json['createdAt']) : null,
       _updatedAt = json['updatedAt'] != null ? amplify_core.TemporalDateTime.fromString(json['updatedAt']) : null;
   
   Map<String, dynamic> toJson() => {
-    'id': id, 'tripName': _tripName, 'destination': _destination, 'startDate': _startDate?.format(), 'endDate': _endDate?.format(), 'tripImageUrl': _tripImageUrl, 'tripImageKey': _tripImageKey, 'createdAt': _createdAt?.format(), 'updatedAt': _updatedAt?.format()
+    'id': id, 'tripName': _tripName, 'destination': _destination, 'startDate': _startDate?.format(), 'endDate': _endDate?.format(), 'tripImageUrl': _tripImageUrl, 'tripImageKey': _tripImageKey, 'Activities': _Activities?.map((Activity? e) => e?.toJson()).toList(), 'createdAt': _createdAt?.format(), 'updatedAt': _updatedAt?.format()
   };
   
   Map<String, Object?> toMap() => {
@@ -222,6 +246,7 @@ class Trip extends amplify_core.Model {
     'endDate': _endDate,
     'tripImageUrl': _tripImageUrl,
     'tripImageKey': _tripImageKey,
+    'Activities': _Activities,
     'createdAt': _createdAt,
     'updatedAt': _updatedAt
   };
@@ -234,6 +259,9 @@ class Trip extends amplify_core.Model {
   static final ENDDATE = amplify_core.QueryField(fieldName: "endDate");
   static final TRIPIMAGEURL = amplify_core.QueryField(fieldName: "tripImageUrl");
   static final TRIPIMAGEKEY = amplify_core.QueryField(fieldName: "tripImageKey");
+  static final ACTIVITIES = amplify_core.QueryField(
+    fieldName: "Activities",
+    fieldType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.model, ofModelName: 'Activity'));
   static var schema = amplify_core.Model.defineSchema(define: (amplify_core.ModelSchemaDefinition modelSchemaDefinition) {
     modelSchemaDefinition.name = "Trip";
     modelSchemaDefinition.pluralName = "Trips";
@@ -288,6 +316,13 @@ class Trip extends amplify_core.Model {
       key: Trip.TRIPIMAGEKEY,
       isRequired: false,
       ofType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.string)
+    ));
+    
+    modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.hasMany(
+      key: Trip.ACTIVITIES,
+      isRequired: false,
+      ofModelName: 'Activity',
+      associatedKey: Activity.TRIP
     ));
     
     modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.nonQueryField(
