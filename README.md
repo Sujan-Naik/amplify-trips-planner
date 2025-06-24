@@ -1,16 +1,10 @@
 # amplify_trips_planner
+**A trip-planning project built using an AWS hands-on tutorial centered around Amplify**
+*Can be built on IOS, android or as a web application* 
+[Part one](https://aws.amazon.com/getting-started/hands-on/build-flutter-mobile-app-part-one/)
+[Part two](https://aws.amazon.com/getting-started/hands-on/build-flutter-mobile-app-part-two/)
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Amazon Services Used
+- Cognito
+- S3
+- AppSync with GraphQL APIs 
